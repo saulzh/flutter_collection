@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_collection/const/style.dart';
+import 'package:flutter_collection/pages/canvas.dart';
 
 class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
@@ -18,6 +19,7 @@ class _HomeState extends State<Home> {
             child: Column(
           children: [
             header(context),
+            body(context),
           ],
         )),
       ),
@@ -49,6 +51,12 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget body(BuildContext context) {
+    return Container(
+      child: CanvasPage(),
     );
   }
 }

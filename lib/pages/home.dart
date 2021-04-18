@@ -8,6 +8,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> homeArray = [
+    '动画',
+    'canvas',
+    '文件分享',
+    '微信分享',
+    '图片裁剪',
+    '生成图片',
+    '音频',
+    '视频',
+    '手势',
+  ];
+
   void initState() {
     super.initState();
   }
@@ -15,48 +27,42 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var home = MaterialApp(
       home: Scaffold(
-        body: Container(
-            child: Column(
-          children: [
-            header(context),
-            body(context),
-          ],
-        )),
+        appBar: AppBar(
+          title: Text('Flutter collection'),
+        ),
+        body: body(context),
       ),
     );
     return home;
   }
 
-  Widget header(BuildContext context) {
+  Widget body(BuildContext context) {
     return Container(
-      height: 50,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: Colors.grey,
-      )),
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(
-              left: 10,
-              right: 10,
-            ),
-            child: Icon(
-              Icons.thumb_up,
-              color: Colors.redAccent,
-            ),
-          ),
-          Container(
-            child: Text('FLutter web test'),
-          ),
-        ],
+      child: ListView.builder(
+        itemCount: homeArray.length,
+        itemBuilder: (BuildContext context, int index) {
+          String item = homeArray[index];
+          return homeItem(context, item);
+        },
       ),
     );
   }
 
-  Widget body(BuildContext context) {
+  Widget homeItem(BuildContext context, String item) {
     return Container(
-      child: CanvasPage(),
+      height: 60,
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+        bottom: 5,
+      ),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.pink[100],
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Text(item),
     );
   }
 }
